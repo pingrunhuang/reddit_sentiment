@@ -1,0 +1,9 @@
+dash 
+dash-renderer 
+dash-html-components 
+dash-core-components 
+plotly
+pandas-datareader
+praw==3.6.0
+redis
+mysqlclient
