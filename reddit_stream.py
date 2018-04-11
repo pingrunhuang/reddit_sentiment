@@ -1,8 +1,9 @@
+# -*- coding:utf-8 -*-
 import praw
 from redis import ConnectionPool, Redis
 from model import Sentiment
 from sqlalchemy import create_engine
-from DBUtil import database
+# from DBUtil import database
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 class RedditBot():
@@ -31,12 +32,13 @@ class RedditBot():
         recent_reddits = []
         for submission in subreddit.stream.submissions():
             new_reddit = Sentiment()
-            new_reddit.title = str(submission.title.encode("utf8"))
+            new_reddit.title = str(submission.title)
             new_reddit.unix = str(submission.created_utc)
             new_reddit.sentiment = get_sentiment(submission.title)
             new_reddit.category = sentiment_term
             recent_reddits.append(new_reddit)
             print(submission.title)
+
             if len(recent_reddits)==MAX_REDDIT_TO_COMMIT:
                 database.insert("sentiment", recent_reddits)
                 recent_reddits=[]
@@ -66,4 +68,4 @@ class RedditBot():
 
 if __name__=="__main__":
     reddit_bot = RedditBot()
-    reddit_bot.store_recent_reddit(sentiment_term="all")
+    reddit_bot.store_recent_reddit(sentiment_term="china")

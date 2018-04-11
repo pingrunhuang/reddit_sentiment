@@ -6,6 +6,7 @@ import plotly.graph_objs as go
 import pandas as pd
 from DBUtil import database
 from cache import cache
+from textblob import TextBlob
 
 MAX_RECENT_POSTS = 10
 
@@ -25,6 +26,10 @@ app.layout = html.Div([
                 dcc.Input(id="keyword", type="text", value="")
             ], style={'width':'50%','margin-left':10,'margin-right':60,'max-width':50000}
         ),
+
+        html.Div(className="row", children=[
+            html.Div(id="")
+        ]),
         
         html.Div(className="row", children=[
             html.Div(id="recent-reddit-table", className="col s12 m6 l6"),
@@ -38,7 +43,7 @@ app.layout = html.Div([
 
         dcc.Interval(
             id="sentiment-pie-update",
-            interval=60*1000
+            interval=15*1000
         )
     ]
 )
@@ -111,7 +116,7 @@ def update_sentiment_pie(sentiment_term):
 
     return {"data":[trace],
             'layout':go.Layout(
-                    title='Positive vs Negative sentiment for "{}" (longer-term)'.format(sentiment_term),
+                    title='Positive vs Negative sentiment for "{}" (historical)'.format(sentiment_term),
                     showlegend=True
                     )
             }
