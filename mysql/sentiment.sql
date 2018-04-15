@@ -6,4 +6,4 @@ CREATE TABLE `sentiment` (
   `category` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_title` (`unix`)
-) ENGINE=InnoDB AUTO_INCREMENT=13107 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=13107 DEFAULT CHARSET=utf8mb4;

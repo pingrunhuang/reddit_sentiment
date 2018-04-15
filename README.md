@@ -1,3 +1,6 @@
+# Live reddit sentiment
+![](first-prototype.png)
+
 ## Redis caching
 Run the following commands:
 - build the required image: `docker build -t my-redis ./redis`
@@ -33,7 +36,6 @@ ___
 - ......
 
 **Please create an issue to help me figure out what other features could be added to this product.**
-
 ___
 # Credits
 Thanks for [**Sentdex**](https://github.com/Sentdex) who gave the tutorial about how to use dash and help me build up my very first data visualization app with just some simple work.

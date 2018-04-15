@@ -9,7 +9,7 @@ class MysqlBot:
     port="3306"
     database="sentiment"
 
-    info = "mysql://{}:{}@{}:{}/{}?charset=utf8".format(username, password, host, port, database)
+    info = "mysql://{}:{}@{}:{}/{}?charset=utf8mb4".format(username, password, host, port, database)
     
     def __init__(self):
         self.engine = create_engine(self.info)

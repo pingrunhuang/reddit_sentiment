@@ -3,7 +3,7 @@ import praw
 from redis import ConnectionPool, Redis
 from model import Sentiment
 from sqlalchemy import create_engine
-# from DBUtil import database
+from DBUtil import database
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 class RedditBot():
@@ -26,7 +26,7 @@ class RedditBot():
             """
             vs = analyzer.polarity_scores(text)
             return str(vs["compound"])
-        database.gen_sentiment_table()
+        # database.gen_sentiment_table()
 
         subreddit = self.reddit.subreddit(sentiment_term)
         recent_reddits = []
@@ -68,4 +68,4 @@ class RedditBot():
 
 if __name__=="__main__":
     reddit_bot = RedditBot()
-    reddit_bot.store_recent_reddit(sentiment_term="china")
+    reddit_bot.store_recent_reddit(sentiment_term="syria")
